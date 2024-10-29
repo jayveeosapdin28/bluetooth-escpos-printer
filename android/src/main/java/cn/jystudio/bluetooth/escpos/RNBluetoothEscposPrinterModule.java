@@ -456,6 +456,11 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
             Log.d(TAG, e.getMessage());
         }
     }    
+   @ReactMethod
+   public void cut () {
+        byte[] command = PrinterCommand.POS_Set_Cut(1);
+        sendDataByte(command);
+   }
 
     private boolean sendDataByte(byte[] data) {
         if (data==null || mService.getState() != BluetoothService.STATE_CONNECTED) {
